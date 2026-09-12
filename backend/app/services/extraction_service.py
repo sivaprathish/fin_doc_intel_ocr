@@ -576,6 +576,11 @@ DOCUMENT_END
                 "FINANCING",
                 "CASH_RECONCILIATION",
                 "EXCHANGE_EFFECT",
+                "OPERATING ACTIVITIES",
+                "INVESTING ACTIVITIES",
+                "FINANCING ACTIVITIES",
+                "CASH RECONCILIATION",
+                "EXCHANGE EFFECT",
             }
             if not categories.intersection(expected):
                 raise ExtractionError(
