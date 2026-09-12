@@ -40,7 +40,7 @@ class PaddleOCRService:
         cpu_threads = int(
             os.getenv(
                 "PADDLEOCR_CPU_THREADS",
-                str(min(os.cpu_count() or 4, 8)),
+                str(min(os.cpu_count() or 2, 4)),
             )
         )
         log.info(
@@ -133,7 +133,7 @@ class PaddleOCRService:
                 image = image.convert("RGB")
 
             # Enlarge low-resolution invoice images.
-            target_width = 2000
+            target_width = 1200
 
             if image.width < target_width:
                 scale = min(target_width / image.width, 2.5)
