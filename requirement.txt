@@ -17,3 +17,7 @@ pymupdf
 python-dotenv
 tenacity
 pytest
+Flask>=3.1,<4
+requests>=2.32,<3
+python-dotenv>=1,<2
+waitress>=3,<4
