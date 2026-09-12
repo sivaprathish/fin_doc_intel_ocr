@@ -52,7 +52,7 @@ class PaddleOCRService:
             text_recognition_model_name="PP-OCRv6_small_rec",
             use_doc_orientation_classify=False,
             use_doc_unwarping=False,
-            use_textline_orientation=True,
+            use_textline_orientation=False,
             device="cpu",
             engine="paddle_static",
             engine_config={
