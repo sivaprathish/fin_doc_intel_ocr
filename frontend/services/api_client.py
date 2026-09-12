@@ -19,12 +19,15 @@ class APIClient:
                                         timeout=(10, self.timeout), **kwargs)
         except requests.Timeout:
             raise APIError('Processing timed out. Check document history before uploading again; the backend may still finish.', 504) from None
-        except requests.RequestException:
-            raise APIError('Cannot connect to the backend. Check that FastAPI is running.', 503) from None
+        except requests.RequestException as e:
+            raise APIError(f'Backend request failed: {e}', 502) from None
         try:
             data = response.json()
         except ValueError:
-            raise APIError('The backend returned an unreadable response.') from None
+            raise APIError(
+                f'Backend returned invalid response (HTTP {response.status_code}): {response.text[:500]}',
+                502
+            ) from None
         if not response.ok:
             error = data.get('error', data.get('detail', {})) if isinstance(data, dict) else {}
             message = error.get('message') if isinstance(error, dict) else None
