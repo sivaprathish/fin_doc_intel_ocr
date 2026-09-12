@@ -1,7 +1,7 @@
 fastapi
 uvicorn[standard]
-flask
-requests
+flask>=3.1,<4
+requests>=2.32,<3
 httpx
 python-multipart
 pydantic
@@ -14,6 +14,8 @@ paddlepaddle
 numpy
 pillow
 pymupdf
-python-dotenv
+python-dotenv>=1,<2
 tenacity
 pytest
+waitress>=3,<4
+gunicorn>=23
