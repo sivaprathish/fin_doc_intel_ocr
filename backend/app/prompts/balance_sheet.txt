@@ -1,0 +1,38 @@
+Extract this balance sheet faithfully.
+
+Required output:
+
+1. entity_name
+	- Use only the exact entity name printed in the document.
+	- Never add explanations, guesses, or contextual commentary.
+
+2. periods
+	- Extract every reporting date or year shown as a numeric column.
+	- Preserve the exact visible period labels.
+
+3. financial_line_items
+	- Create one item for every visible balance-sheet row.
+	- Preserve the exact row label.
+	- Map every visible period to its corresponding amount.
+	- Convert commas only for numeric parsing.
+	- Treat numbers in parentheses as negative.
+	- Do not omit subtotal or total rows.
+	- Do not combine separate rows.
+	- Use null only when the printed value is unreadable.
+
+4. document_fields
+	Extract supported totals including:
+	- total_assets
+	- total_liabilities
+	- total_equity
+	- total_capital_and_liabilities
+	- reporting_currency
+	- reporting_unit
+
+Every non-null field must contain evidence copied exactly from the document
+and its page number.
+
+Do not infer the entity name, periods, values, currency, or units.
+Do not return an empty periods or financial_line_items array when a financial
+table is visible in the supplied OCR text.
+

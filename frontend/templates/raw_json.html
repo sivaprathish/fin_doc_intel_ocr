@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<div class="heading"><div><p class="eyebrow">LATEST STORED RESULT</p><h1>Raw JSON</h1><p>{{ name }}</p></div><a class="button" href="{{ url_for('raw', name=name, download=1) }}">Download JSON</a></div><section class="card"><pre>{{ content }}</pre></section>{% endblock %}
