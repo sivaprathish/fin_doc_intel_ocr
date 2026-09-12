@@ -25,7 +25,8 @@ class APIClient:
             data = response.json()
         except ValueError:
             raise APIError(
-                f'Backend returned invalid response (HTTP {response.status_code}): {response.text[:500]}',
+                f'Backend returned invalid response '
+                f'(HTTP {response.status_code}): {response.text[:500]}',
                 502
             ) from None
         if not response.ok:
