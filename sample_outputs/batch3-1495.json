@@ -1,0 +1,302 @@
+{
+  "document_name": "batch3-1495.jpg",
+  "document_type": "invoice",
+  "processing_status": "PASS",
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": true,
+    "page_count": 1,
+    "status": "PASS"
+  },
+  "extracted_data": {
+    "document_fields": {
+      "vendor_name": {
+        "value": "BEYOND DIGITAL IMAGING",
+        "raw_value": "BEYOND DIGITAL IMAGING",
+        "evidence": "PASS"
+      },
+      "vendor_address": {
+        "value": "36 Apple Creek Blvd.\nMARKHAM,L3R 4Y4",
+        "raw_value": "36 Apple Creek Blvd.\nMARKHAM,L3R 4Y4",
+        "evidence": "PASS"
+      },
+      "invoice_number": {
+        "value": "298839",
+        "raw_value": "298839",
+        "evidence": "PASS"
+      },
+      "invoice_date": {
+        "value": "Sept. 5, 2023",
+        "raw_value": "Sept. 5, 2023",
+        "evidence": "PASS"
+      },
+      "currency": {
+        "value": "USD",
+        "raw_value": "USD",
+        "evidence": "PASS"
+      },
+      "total_amount": {
+        "value": 5257.0,
+        "raw_value": "5257.0",
+        "evidence": "PASS"
+      }
+    },
+    "periods": [],
+    "invoice_line_items": [
+      {
+        "description": {
+          "value": "5991 3M SJ3550 Dual LockFastener",
+          "raw_value": "5991 3M SJ3550 Dual LockFastener",
+          "evidence": "PASS"
+        },
+        "quantity": {
+          "value": 9.0,
+          "raw_value": "9.0",
+          "evidence": "PASS"
+        },
+        "unit_price": {
+          "value": 367.0,
+          "raw_value": "367.0",
+          "evidence": "PASS"
+        },
+        "amount": {
+          "value": 3303.0,
+          "raw_value": "3303.0",
+          "evidence": "PASS"
+        },
+        "additional_fields": {},
+        "evidence": "PASS"
+      },
+      {
+        "description": {
+          "value": "6015 3M 369 Trans Polypro",
+          "raw_value": "6015 3M 369 Trans Polypro",
+          "evidence": "PASS"
+        },
+        "quantity": {
+          "value": 9.0,
+          "raw_value": "9.0",
+          "evidence": "PASS"
+        },
+        "unit_price": {
+          "value": 1.0,
+          "raw_value": "1.0",
+          "evidence": "PASS"
+        },
+        "amount": {
+          "value": 9.0,
+          "raw_value": "9.0",
+          "evidence": "PASS"
+        },
+        "additional_fields": {},
+        "evidence": "PASS"
+      },
+      {
+        "description": {
+          "value": "6157 3M 4949 VHB Acryl. Foam Tape",
+          "raw_value": "6157 3M 4949 VHB Acryl. Foam Tape",
+          "evidence": "PASS"
+        },
+        "quantity": {
+          "value": 1.0,
+          "raw_value": "1.0",
+          "evidence": "PASS"
+        },
+        "unit_price": {
+          "value": 110.0,
+          "raw_value": "110.0",
+          "evidence": "PASS"
+        },
+        "amount": {
+          "value": 110.0,
+          "raw_value": "110.0",
+          "evidence": "PASS"
+        },
+        "additional_fields": {},
+        "evidence": "PASS"
+      },
+      {
+        "description": {
+          "value": "5810 3M 2242 Electrical Rubber",
+          "raw_value": "5810 3M 2242 Electrical Rubber",
+          "evidence": "PASS"
+        },
+        "quantity": {
+          "value": 6.0,
+          "raw_value": "6.0",
+          "evidence": "PASS"
+        },
+        "unit_price": {
+          "value": 4.0,
+          "raw_value": "4.0",
+          "evidence": "PASS"
+        },
+        "amount": {
+          "value": 24.0,
+          "raw_value": "24.0",
+          "evidence": "PASS"
+        },
+        "additional_fields": {},
+        "evidence": "PASS"
+      },
+      {
+        "description": {
+          "value": "5862 3M 256Printable FlatbackWH",
+          "raw_value": "5862 3M 256Printable FlatbackWH",
+          "evidence": "PASS"
+        },
+        "quantity": {
+          "value": 2.0,
+          "raw_value": "2.0",
+          "evidence": "PASS"
+        },
+        "unit_price": {
+          "value": 17.0,
+          "raw_value": "17.0",
+          "evidence": "PASS"
+        },
+        "amount": {
+          "value": 34.0,
+          "raw_value": "34.0",
+          "evidence": "PASS"
+        },
+        "additional_fields": {},
+        "evidence": "PASS"
+      }
+    ],
+    "financial_line_items": [],
+    "additional_tables": [],
+    "warnings": []
+  },
+  "validation": {
+    "checks": [
+      {
+        "name": "invoice_line_1_amount_check",
+        "formula": "quantity * unit_price",
+        "period": null,
+        "operands": {
+          "quantity": 9.0,
+          "unit_price": 367.0
+        },
+        "calculated_value": 3303.0,
+        "reported_value": 3303.0,
+        "variance": 0.0,
+        "status": "PASS",
+        "message": null
+      },
+      {
+        "name": "invoice_line_2_amount_check",
+        "formula": "quantity * unit_price",
+        "period": null,
+        "operands": {
+          "quantity": 9.0,
+          "unit_price": 1.0
+        },
+        "calculated_value": 9.0,
+        "reported_value": 9.0,
+        "variance": 0.0,
+        "status": "PASS",
+        "message": null
+      },
+      {
+        "name": "invoice_line_3_amount_check",
+        "formula": "quantity * unit_price",
+        "period": null,
+        "operands": {
+          "quantity": 1.0,
+          "unit_price": 110.0
+        },
+        "calculated_value": 110.0,
+        "reported_value": 110.0,
+        "variance": 0.0,
+        "status": "PASS",
+        "message": null
+      },
+      {
+        "name": "invoice_line_4_amount_check",
+        "formula": "quantity * unit_price",
+        "period": null,
+        "operands": {
+          "quantity": 6.0,
+          "unit_price": 4.0
+        },
+        "calculated_value": 24.0,
+        "reported_value": 24.0,
+        "variance": 0.0,
+        "status": "PASS",
+        "message": null
+      },
+      {
+        "name": "invoice_line_5_amount_check",
+        "formula": "quantity * unit_price",
+        "period": null,
+        "operands": {
+          "quantity": 2.0,
+          "unit_price": 17.0
+        },
+        "calculated_value": 34.0,
+        "reported_value": 34.0,
+        "variance": 0.0,
+        "status": "PASS",
+        "message": null
+      },
+      {
+        "name": "invoice_subtotal_check",
+        "formula": "sum(line_item.amount)",
+        "period": "Line items or reported subtotal are unavailable.",
+        "operands": {
+          "line_1_amount": 3303.0,
+          "line_2_amount": 9.0,
+          "line_3_amount": 110.0,
+          "line_4_amount": 24.0,
+          "line_5_amount": 34.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "One or more required source values are missing or unreadable."
+      },
+      {
+        "name": "invoice_total_check",
+        "formula": "subtotal + tax_amount - discount",
+        "period": null,
+        "operands": {
+          "subtotal": null,
+          "tax_amount": null,
+          "discount": null
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "One or more required source values are missing or unreadable."
+      },
+      {
+        "name": "invoice_change_check",
+        "formula": "cash_paid - total_amount",
+        "period": null,
+        "operands": {
+          "cash_paid": null,
+          "total_amount": 5257.0
+        },
+        "calculated_value": null,
+        "reported_value": null,
+        "variance": null,
+        "status": "NOT_APPLICABLE",
+        "message": "One or more required source values are missing or unreadable."
+      }
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "started_at": "2026-09-12T00:34:24.079232Z",
+    "completed_at": "2026-09-12T00:36:51.029097Z",
+    "processing_time_ms": 146949,
+    "page_count": 1,
+    "model_id": "gemini-3.6-flash"
+  }
+}
