@@ -1,0 +1,34 @@
+name: Build Linux Tesseract bundle
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Debian 12 Tesseract bundle
+        run: bash tools/build-tesseract-bundle.sh
+
+      - name: Verify bundled Tesseract
+        run: |
+          mkdir -p /tmp/tesseract-bundle-check
+          tar -xzf tools/tesseract-linux-amd64.tar.gz -C /tmp/tesseract-bundle-check
+          /tmp/tesseract-bundle-check/bin/tesseract --version
+          /tmp/tesseract-bundle-check/bin/tesseract --list-langs | grep -Fx eng
+
+      - name: Upload Tesseract archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: tesseract-linux-amd64
+          path: tools/tesseract-linux-amd64.tar.gz
+          if-no-files-found: error
+          retention-days: 30
