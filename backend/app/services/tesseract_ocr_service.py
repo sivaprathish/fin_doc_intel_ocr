@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 import os
+import shutil
 import threading
 from io import BytesIO
 from typing import Any
@@ -26,7 +27,7 @@ class TesseractOCRService:
         if self.timeout <= 0 or self.max_side < 1 or self.psm not in range(3, 14):
             raise ValueError("Invalid Tesseract timeout, maximum side, or page segmentation mode.")
         os.environ.setdefault("OMP_THREAD_LIMIT", "1")
-        command = os.getenv("TESSERACT_CMD", "").strip()
+        command = os.getenv("TESSERACT_CMD", "").strip() or shutil.which("tesseract")
         if command:
             pytesseract.pytesseract.tesseract_cmd = command
 
