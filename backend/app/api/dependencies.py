@@ -11,21 +11,22 @@ from app.services.extraction_service import StructuredExtractionService
 from app.services.financial_validation_service import FinancialValidationService
 from app.services.image_conversion_service import ImageConversionService
 from app.services.file_validation_service import FileValidationService
-from app.services.paddle_ocr_service import PaddleOCRService
+from app.services.tesseract_ocr_service import TesseractOCRService
 
 
 def get_repository(db: Session = Depends(get_db)):
     return DocumentRepository(db)
 
 
-@lru_cache
-def get_paddle_ocr_service():
-    return PaddleOCRService()
+@lru_cache(maxsize=1)
+def get_tesseract_ocr_service():
+    return TesseractOCRService()
 
 
-@lru_cache
+@lru_cache(maxsize=1)
 def get_extraction_service():
     settings = get_settings()
+
     return StructuredExtractionService(
         api_key=settings.gemini_api_key,
         model=settings.gemini_model,
@@ -33,33 +34,38 @@ def get_extraction_service():
     )
 
 
-@lru_cache
+@lru_cache(maxsize=1)
 def get_financial_validation_service():
     settings = get_settings()
+
     return FinancialValidationService(
-        settings.financial_abs_tolerance, settings.financial_rel_tolerance
+        settings.financial_abs_tolerance,
+        settings.financial_rel_tolerance,
     )
 
 
-@lru_cache
+@lru_cache(maxsize=1)
 def get_file_validation_service():
     settings = get_settings()
+
     return FileValidationService(
-        max_pages=settings.max_page_count, max_bytes=settings.max_file_bytes
+        max_pages=settings.max_page_count,
+        max_bytes=settings.max_file_bytes,
     )
 
 
-@lru_cache
+@lru_cache(maxsize=1)
 def get_image_conversion_service():
-    validator = get_file_validation_service()
-    return ImageConversionService(validator)
+    return ImageConversionService(get_file_validation_service())
 
 
 def get_document_service(
     repository: DocumentRepository = Depends(get_repository),
-    paddle_ocr: PaddleOCRService = Depends(get_paddle_ocr_service),
+    ocr: TesseractOCRService = Depends(get_tesseract_ocr_service),
     extractor: StructuredExtractionService = Depends(get_extraction_service),
-    financial: FinancialValidationService = Depends(get_financial_validation_service),
+    financial: FinancialValidationService = Depends(
+        get_financial_validation_service
+    ),
     validator: FileValidationService = Depends(get_file_validation_service),
     converter: ImageConversionService = Depends(get_image_conversion_service),
 ):
@@ -68,7 +74,7 @@ def get_document_service(
         settings=get_settings(),
         validator=validator,
         converter=converter,
-        ocr=paddle_ocr,
+        ocr=ocr,
         extractor=extractor,
         financial=financial,
     )

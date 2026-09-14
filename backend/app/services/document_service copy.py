@@ -7,7 +7,7 @@ from app.services.financial_validation_service import FinancialValidationService
 from app.services.extraction_service import ExtractionError, StructuredExtractionService
 from app.services.file_validation_service import FileValidationService
 from app.services.image_conversion_service import ImageConversionService
-from app.services.tesseract_ocr_service import TesseractOCRService
+from app.services.paddle_ocr_service import PaddleOCRService
 from app.utils.file_utils import safe_document_name
 
 log = logging.getLogger(__name__)
@@ -35,7 +35,7 @@ class DocumentService:
         self.validator = validator or FileValidationService(
             max_pages=settings.max_page_count, max_bytes=settings.max_file_bytes)
         self.converter = converter or ImageConversionService(self.validator)
-        self.ocr = ocr or TesseractOCRService()
+        self.ocr = ocr or PaddleOCRService()
         self.extractor = extractor or StructuredExtractionService(
             api_key=settings.gemini_api_key,
             model=settings.gemini_model,
